@@ -35,7 +35,7 @@ def password_change():
     ypos = 600
     wgeo = '300x200+' + str(xpos) + '+' + str(ypos)
     pwd_chng_window.geometry(wgeo)
-    pwd_chng_window.configure(background='Grey')
+    pwd_chng_window.configure(background='Black')
     pwd_chng_window.resizable(False, False)
     pwd_chng_window.grab_set()
     Label(pwd_chng_window, text='New Password', font='Arial 15 bold ',bg='Grey').pack(side=TOP, pady=5)
@@ -111,6 +111,7 @@ def get_config_name(selected_value):
             automation_restore_options_frame.pack(side=TOP)
             cbtn_last.pack(side=TOP, anchor='w')
             cbtn_manual_ask.pack(side=TOP, anchor='w')
+
     elif automations_list.get(automations_list.curselection()) == 'Enable OSPF':
         device_to_enable = [device_list.get(sel_ip) for sel_ip in list(device_list.curselection())]
         if len(device_to_enable) == 0:
@@ -137,57 +138,57 @@ def get_config_name(selected_value):
              
             for backup_dev in full_list:
                 name_list.append(backup_dev[1])
-                ospf_main_frm.pack(side=TOP)
-                ospf_device_frm.pack(side=LEFT, anchor='n')
-                ospf_process_id_frm.pack(side=LEFT, anchor='n')
-                ospf_ip_frm.pack(side=LEFT, anchor='n')
-                ospf_mask_frm.pack(side=LEFT, anchor='n')
-                ospf_area_id_frm.pack(side=LEFT, anchor='n')
-                ospf_device_lbl.pack(side=TOP)
-                ospf_process_id_lbl.pack(side=TOP)
-                ospf_ip_lbl.pack(side=TOP)
-                ospf_mask_lbl.pack(side=TOP)
-                ospf_area_id_lbl.pack(side=TOP)
-                global entry
-                entry ={}
-                for i, n in enumerate(name_list):
-                    ospf_device_name = str(name_list[i])
-                    Label(ospf_device_frm, text=ospf_device_name,font=('Aria', 9), fg='black', width=15, anchor='w',bg='white').pack(side=TOP, pady=5)
-                    ospf_pid = Entry(ospf_process_id_frm, width=10,font='Helvetica 11')
-                    ospf_pid.pack(side=TOP, pady=5)
-                    ospf_ip = Entry(ospf_ip_frm, width=25, font='Helvetica11')
-                    ospf_ip.pack(side=TOP, pady=5)
-                    ospf_mask = Entry(ospf_mask_frm, width=25, font='Helvetica 11')
-                    ospf_mask.pack(side=TOP, pady=5)
-                    ospf_area = Entry(ospf_area_id_frm, width=10,font='Helvetica 11')
-                    ospf_area.pack(side=TOP, pady=5)
-                    entry[n] = [ospf_pid, ospf_ip, ospf_mask, ospf_area]
+            ospf_main_frm.pack(side=TOP)
+            ospf_device_frm.pack(side=LEFT, anchor='n')
+            ospf_process_id_frm.pack(side=LEFT, anchor='n')
+            ospf_ip_frm.pack(side=LEFT, anchor='n')
+            ospf_mask_frm.pack(side=LEFT, anchor='n')
+            ospf_area_id_frm.pack(side=LEFT, anchor='n')
+            ospf_device_lbl.pack(side=TOP)
+            ospf_process_id_lbl.pack(side=TOP)
+            ospf_ip_lbl.pack(side=TOP)
+            ospf_mask_lbl.pack(side=TOP)
+            ospf_area_id_lbl.pack(side=TOP)
+            global entry
+            entry ={}
+            for i, n in enumerate(name_list):
+                ospf_device_name = str(name_list[i])
+                Label(ospf_device_frm, text=ospf_device_name,font=('Aria', 9), fg='black', width=15, anchor='w',bg='white').pack(side=TOP, pady=5)
+                ospf_pid = Entry(ospf_process_id_frm, width=10,font='Helvetica 11')
+                ospf_pid.pack(side=TOP, pady=5)
+                ospf_ip = Entry(ospf_ip_frm, width=25, font='Helvetica11')
+                ospf_ip.pack(side=TOP, pady=5)
+                ospf_mask = Entry(ospf_mask_frm, width=25, font='Helvetica 11')
+                ospf_mask.pack(side=TOP, pady=5)
+                ospf_area = Entry(ospf_area_id_frm, width=10,font='Helvetica 11')
+                ospf_area.pack(side=TOP, pady=5)
+                entry[n] = [ospf_pid, ospf_ip, ospf_mask, ospf_area]
         
     elif automations_list.get(automations_list.curselection()) == 'AddFirewall Rule':
         for child in automation_conf_frame.winfo_children():
             if str(child) != '.!labelframe2.!button':
                 child.pack_forget()
-            acl_number_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_type_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_options_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_source_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_swildcard_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_des_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_dwildcard_frm.pack(side=LEFT, padx=5, pady=10)
-            acl_number_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_type_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_protocol_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_source_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_swildcard_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_des_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_dwildcard_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_nmb_entry.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_types.pack(side=TOP, anchor='n', padx=5, pady=10)
-            acl_options.pack(side=TOP, anchor='n', padx=5, pady=10)
-            source_ip_entry.pack(side=TOP, anchor='n', padx=5, pady=10)
-            source_wildcard_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
-            destination_ip_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
-            destination_wildcard_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
+        acl_number_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_type_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_options_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_source_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_swildcard_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_des_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_dwildcard_frm.pack(side=LEFT, padx=5, pady=10)
+        acl_number_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_type_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_protocol_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_source_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_swildcard_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_des_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_dwildcard_lbl.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_nmb_entry.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_types.pack(side=TOP, anchor='n', padx=5, pady=10)
+        acl_options.pack(side=TOP, anchor='n', padx=5, pady=10)
+        source_ip_entry.pack(side=TOP, anchor='n', padx=5, pady=10)
+        source_wildcard_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
+        destination_ip_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
+        destination_wildcard_entry.pack(side=TOP, anchor='n', padx=5,pady=10)
 
 
 def create_key():
@@ -219,8 +220,9 @@ def backup_config(host, path):
     output_description.update_idletasks()
     try:
         netmiko_connection = Netmiko(**host)
+        
     except NetMikoTimeoutException:
-        messagebox.showerror('Error', ('Timeout error to: ' +host["host"]))
+        messagebox.showerror('Error', ('Timeout error to: ' + host["host"]))
 
     except AuthenticationException:
         messagebox.showerror('Error', 'Authentication failure errorto: ' + host["host"])
@@ -235,6 +237,8 @@ def backup_config(host, path):
         messagebox.showerror('Error', 'Unknown error to: ' + host["host"] + str(unknown_error))
 
     netmiko_connection.enable()
+
+    print(netmiko_connection.send_command('show run'))
     output = netmiko_connection.send_command('show run')
     output = output[output.find('version'):]
     output = output.rsplit("end", 1)[0]
@@ -270,19 +274,20 @@ def restore_config(r_host, r_filename):
 
 def ospf_config(host, pid, ip_for_ospf, mask_for_ospf, area):
     output_description.insert(END, f'connecting and enabling OSPF on:{host["ip"]}\n')
+
     output_description.update_idletasks()
-    #try:
-    ospf_connection = Netmiko(**host)
-   # except NetMikoTimeoutException:
-    #    messagebox.showerror('Error', ('Timeout error to: ' + host["ip"]))
-   # except AuthenticationException:
-     #   messagebox.showerror('Error', 'Authentication failure error to: ' + host["ip"])
-   # except SSHException:
-      #  messagebox.showerror('Error', 'SSH Error. Check if SSH is enabled ' + host["ip"])
-   # except EOFError:
-       # messagebox.showerror('Error', 'End of file while attempting device' + host["ip"])
-   # except Exception as unknown_error:
-       # messagebox.showerror('Error', 'Unknown error to: ' + host["ip"] + str(unknown_error))
+    try:
+        ospf_connection = Netmiko(**host)
+    except NetMikoTimeoutException:
+        messagebox.showerror('Error', ('Timeout error to: ' + host["ip"]))
+    except AuthenticationException:
+        messagebox.showerror('Error', 'Authentication failure error to: ' + host["ip"])
+    except SSHException:
+        messagebox.showerror('Error', 'SSH Error. Check if SSH is enabled ' + host["ip"])
+    except EOFError:
+        messagebox.showerror('Error', 'End of file while attempting device' + host["ip"])
+    except Exception as unknown_error:
+        messagebox.showerror('Error', 'Unknown error to: ' + host["ip"] + str(unknown_error))
         
     ospf_connection.enable()
     ospf_commands = ['enable', 'configure terminal', 'router ospf ' + pid, 'network ' + ip_for_ospf + ' ' + mask_for_ospf + ' area ' + area, 'end']
@@ -298,8 +303,19 @@ def ospf_config(host, pid, ip_for_ospf, mask_for_ospf, area):
 def acl_config(ac_host, ac_num, ac_action, ac_prot, ac_sip, ac_sw,ac_dip, ac_dw):
     output_description.insert(END, f'connecting and configuring ACL on:{ac_host["ip"]}\n')
     output_description.update_idletasks()
-        # try:
-    acl_connection = Netmiko(**ac_host)
+    try:
+        acl_connection = Netmiko(**ac_host)
+    except NetMikoTimeoutException:
+        messagebox.showerror('Error', ('Timeout error to: ' + ac_host["ip"]))
+    except AuthenticationException:
+        messagebox.showerror('Error', 'Authentication failure error to: ' + ac_host["ip"])
+    except SSHException:
+        messagebox.showerror('Error', 'SSH Error. Check if SSH is enabled ' + ac_host["ip"])
+    except EOFError:
+        messagebox.showerror('Error', 'End of file while attempting device' + ac_host["ip"])
+    except Exception as unknown_error:
+        messagebox.showerror('Error', 'Unknown error to: ' + ac_host["ip"] + str(unknown_error))
+
     acl_connection.enable()
     acl_commands = ['access-list ' + ac_num + ' ' + ac_action + ' ' + ac_prot + ' ' + ac_sip + ' ' + ac_sw + ' ' + ac_dip + ' ' + ac_dw ]
     output = acl_connection.send_config_set(acl_commands)
@@ -331,7 +347,8 @@ def execute_automations():
                         for row in reader:
                             if row[0] == dev_ip:
                                 pwd_to_dec = row[5]
-                    netmiko_host = {'host': dev_ip, 'port': '22','username': 'ihu', 'password':cipher.decrypt(pwd_to_dec.encode()).decode(), 'device_type': 'cisco_ios','fast_cli': False}
+
+                    netmiko_host = {'host': dev_ip, 'port': '22','username': 'admin', 'password':cipher.decrypt(pwd_to_dec.encode()).decode(), 'device_type': 'cisco_ios','fast_cli': False}
                     b_working_folder = os.getcwd()
                     if c_date_ip.get() == 1:
                         if not os.path.exists(b_working_folder +'\\Config\\backup_files\\' + netmiko_host['host']):
@@ -349,6 +366,9 @@ def execute_automations():
 
                     thread_item = threading.Thread(target=backup_config, args=(netmiko_host, backup_filename,))
                     thread_list.append(thread_item)
+
+
+
                 for th in thread_list:
                     th.start()
         else:
@@ -374,8 +394,9 @@ def execute_automations():
                     for row in reader:
                         if row[0] == dev_ip:
                             pwd_to_dec = row[5]
-                device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'ihu', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2} 
+                device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'admin', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2} 
                 working_folder = os.getcwd()
+
                 if c_last.get() == 1:
                     device_folder = glob.glob(working_folder + '\\Config\\backup_files\\' + device_args['ip'] + '\\*')
                     restore_filename = max(device_folder,key=os.path.getctime)  
@@ -406,13 +427,13 @@ def execute_automations():
         cipher = Fernet(dec_key)
         thread_list = []
         for dev_ip in device_to_enable_ip:
-            with open('./Config/Devices.csv', 'rt') as csv_f:
+            with open('./Devices.csv', 'rt') as csv_f:
                 reader = csv.reader(csv_f, delimiter=',')
                 for row in reader:
                     if row[0] == dev_ip:
                         pwd_to_dec = row[5]
                         dev_type = row[2]
-            ospf_device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'ihu', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2}            
+            ospf_device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'admin', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2}            
             if (len(entry[dev_ip][0].get()) == 0 or len(entry[dev_ip][1].get()) == 0 or len(entry[dev_ip][2].get()) == 0 or len(entry[dev_ip][3].get()) == 0):
                 messagebox.showwarning('Alert', 'All OSPF parameters should be filled')
             elif dev_type == 'Switch':
@@ -424,6 +445,7 @@ def execute_automations():
                 ospf_area = entry[dev_ip][3].get()   
                 thread_item = threading.Thread(target=ospf_config,args=(ospf_device_args,ospf_pid, ospf_ip, ospf_mask, ospf_area)) 
                 thread_list.append(thread_item)
+
         for th in thread_list:
             th.start()   
 
@@ -450,7 +472,7 @@ def execute_automations():
                         if row[0] == dev_ip:
                             pwd_to_dec = row[5]
                             dev_type = row[2]
-                acl_device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'ihu', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2}            
+                acl_device_args = {'device_type': 'cisco_ios', 'ip': dev_ip, 'username': 'admin', 'password': cipher.decrypt(pwd_to_dec.encode()).decode(), 'port': 22, 'verbose': True,'global_delay_factor': 2}            
                 if (len(acl_nmb.get()) == 0 or len(source_ip.get()) == 0 or len(source_wildcard.get()) == 0 or len(destination_ip.get()) == 0 or len(destination_wildcard.get()) == 0 or acl_selected_type.get() == 'Select Action'):
                     messagebox.showwarning('Alert', 'All ACL parameters are necessary except protocol')
                 else:
@@ -610,58 +632,57 @@ def getdevices(selected_type):
 
 
 root = Tk()
-root.title('IHU Network Automation Application ')
+root.title('Esi Network Automation Project ')
 def_font = tkinter.font.nametofont("TkDefaultFont")
 def_font.config(size=10, family='Verdana')
-# root.iconbitmap('c:/Users/g.milios/PycharmProjects/QA Reports/im-ages/rtgr_logo_w_symbol.ico')
+
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
 root.state('iconic')
-root.config(bg='#407294')
+root.config(bg='#FFE4C4')
 
 
 
 
 device_add_frame_lbl = Label(text="Add new device:", font='Helvetica 11', bg='#e6e6fa')
 device_filter_frame_lbl = Label(text="Filters:", font='Helvetica 11', bg='#e6e6fa')
-devices_frame_lbl = Label(text="Network Devices", font='Helvetica 11', bg='#407294')
-automations_frame_lbl = Label(text="Automation Actions", font='Helvet-ica 11', bg='#407294')
-automation_conf_frame_lbl = Label(text="Automation Action Configurations", font='Helvetica 25', bg='#407294')
+devices_frame_lbl = Label(text="Network Devices", font='Helvetica 11', bg='#FFE4C4')
+automations_frame_lbl = Label(text="Automation Actions", font='Helvet-ica 11', bg='#FFE4C4')
+automation_conf_frame_lbl = Label(text="Automation Action Configurations", font='Helvetica 25', bg='#FFE4C4')
 
 
 
 
-info_frame = LabelFrame(root, padx=5, pady=5, bg='#407294')
-left_sub_frame = Frame(root, padx=5, relief=FLAT, bg='#407294')
+info_frame = LabelFrame(root, padx=5, pady=5, bg='#FFE4C4')
+left_sub_frame = Frame(root, padx=5, relief=FLAT, bg='#FFE4C4')
 device_filter_frame = LabelFrame(left_sub_frame, labelwidget=device_filter_frame_lbl, padx=5, bg='#e6e6fa', relief=FLAT)
-devices_frame = LabelFrame(left_sub_frame, labelwidget=devices_frame_lbl, padx=5, relief=FLAT, bg='#407294')
-automations_frame = LabelFrame(left_sub_frame, labelwidget=automations_frame_lbl, padx=5, relief=FLAT, bg='#407294')
-buttons_frame = Frame(info_frame, padx=5, relief=FLAT, bg='#407294')
-output_frame = Frame(root, padx=5, bg='#407294', relief=SUNKEN)
+devices_frame = LabelFrame(left_sub_frame, labelwidget=devices_frame_lbl, padx=5, relief=FLAT, bg='#FFE4C4')
+automations_frame = LabelFrame(left_sub_frame, labelwidget=automations_frame_lbl, padx=5, relief=FLAT, bg='#FFE4C4')
+buttons_frame = Frame(info_frame, padx=5, relief=FLAT, bg='#FFE4C4')
+output_frame = Frame(root, padx=5, bg='#FFE4C4', relief=SUNKEN)
 device_add_frame = LabelFrame(info_frame, labelwidget=device_add_frame_lbl, padx=5, bg='#e6e6fa', relief=FLAT)
 img_frame = Frame(root, padx=5, relief=FLAT, bg='#f0f0f0')
-automation_conf_frame = LabelFrame(root, labelwidget=automation_conf_frame_lbl, padx=5, relief=SUNKEN, bg='#407294',
-labelanchor='n')
-manual_file_frame = Frame(automation_conf_frame, padx=5, pady=15, relief=FLAT, bg='#407294')
+automation_conf_frame = LabelFrame(root, labelwidget=automation_conf_frame_lbl, padx=5, relief=SUNKEN, bg='#FFE4C4',labelanchor='n')
+manual_file_frame = Frame(automation_conf_frame, padx=5, pady=15, relief=FLAT, bg='#FFE4C4')
 
 
-ospf_main_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
-ospf_device_frm = LabelFrame(ospf_main_frm, relief=SUNKEN,bg='#407294', pady=15)
-ospf_process_id_frm = LabelFrame(ospf_main_frm, padx=2, relief=SUNKEN,bg='#407294', pady=15)
-ospf_ip_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#407294', pady=15)
-ospf_mask_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#407294', pady=15)
+ospf_main_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FF4500', pady=15)
+ospf_device_frm = LabelFrame(ospf_main_frm, relief=SUNKEN,bg='#FF4500', pady=15)
+ospf_process_id_frm = LabelFrame(ospf_main_frm, padx=2, relief=SUNKEN,bg='#FF4500', pady=15)
+ospf_ip_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#FF4500', pady=15)
+ospf_mask_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#FF4500', pady=15)
 
-ospf_area_id_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#407294', pady=15)
-ospf_device_lbl = Label(ospf_device_frm, text='Device IP\n--------------', font=('Aria', 15, 'bold'), fg='black',
-anchor='w', bg='#407294')
-ospf_process_id_lbl = Label(ospf_process_id_frm, text='process-id\n-----------', font=('Aria', 15, 'bold'),
-fg='black', anchor='w', bg='#407294')
-ospf_ip_lbl = Label(ospf_ip_frm, text='Network IP\n--------------',font=('Aria', 15, 'bold'), fg='black', anchor='w',bg='#407294')
-ospf_mask_lbl = Label(ospf_mask_frm, text='Subnet mask\n------------',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#407294')
-ospf_area_id_lbl = Label(ospf_area_id_frm, text='Area-id\n--------',font=('Aria', 15, 'bold'), fg='black', anchor='w',bg='#407294')
+ospf_area_id_frm = LabelFrame(ospf_main_frm, padx=5, relief=SUNKEN,bg='#FF4500', pady=15)
+ospf_device_lbl = Label(ospf_device_frm, text='Device IP\n--------------', font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FF4500')
+ospf_process_id_lbl = Label(ospf_process_id_frm, text='process-id\n-----------', font=('Aria', 15, 'bold'),fg='black', anchor='w', bg='#FF4500')
+ospf_ip_lbl = Label(ospf_ip_frm, text='Network IP\n--------------',font=('Aria', 15, 'bold'), fg='black', anchor='w',bg='#FF4500')
+ospf_mask_lbl = Label(ospf_mask_frm, text='WildCard mask\n------------',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FF4500')
+ospf_area_id_lbl = Label(ospf_area_id_frm, text='Area-id\n--------',font=('Aria', 15, 'bold'), fg='black', anchor='w',bg='#FF4500')
+
+
 
 automation_filter_frame_lbl = Label(text="Options: ", font='Helvetica 18 ',bg='white')
 automation_filter_frame = LabelFrame(automation_conf_frame, labelwidget=automation_filter_frame_lbl,padx=5, relief=FLAT, bg='white',labelanchor='w')
-backup_name_lbl = Label(automation_conf_frame, text="Filenames configuration ",font='Helvetica 25 bold', bg='#407294')
+backup_name_lbl = Label(automation_conf_frame, text="Filenames configuration ",font='Helvetica 25 bold', bg='#FFE4C4')
 c_date_ip, c_ip_date, c_manual = IntVar(), IntVar(), IntVar()
 cbtn_date_ip = Checkbutton(automation_filter_frame, text="Date First",variable=c_date_ip,onvalue=1, offvalue=0, state=NORMAL)
 cbtn_ip_date = Checkbutton(automation_filter_frame, text="IP First",variable=c_ip_date,onvalue=1, offvalue=0, state=NORMAL)
@@ -673,38 +694,36 @@ cbtn_manual.configure(command=partial(get_backup_options, 'Manual'),bg='white')
 
 manual_config_name = StringVar()
 manual_entry = Entry(manual_file_frame, textvariable=manual_config_name,width=30, font='Helvetica 11')
-filename_lbl = Label(manual_file_frame, text="Filename: ",font='Helvetica 18 bold', bg='#407294')
-dev_ip_lbl = Label(manual_file_frame, text="Device IP_ ",font='Helvetica 15', bg='#407294')
+filename_lbl = Label(manual_file_frame, text="Filename: ",font='Helvetica 18 bold', bg='#FFE4C4')
+dev_ip_lbl = Label(manual_file_frame, text="Device IP_ ",font='Helvetica 15', bg='#FFE4C4')
 
 automation_restore_options_frame_lbl = Label(text="Options: ",font='Helvetica 18 bold',bg='white')
-automation_restore_options_frame = LabelFrame(automation_conf_frame,
-labelwidget=automation_restore_options_frame_lbl,padx=5, relief=FLAT,bg='white', labelanchor='w')
-restore_name_lbl = Label(automation_conf_frame, text="Files to restore",font='Helvetica 25 bold', bg='#407294')
+automation_restore_options_frame = LabelFrame(automation_conf_frame,labelwidget=automation_restore_options_frame_lbl,padx=5, relief=FLAT,bg='white', labelanchor='w')
+restore_name_lbl = Label(automation_conf_frame, text="Files to restore",font='Helvetica 25 bold', bg='#FFE4C4')
 
 c_last, c_manual_ask = IntVar(), IntVar()
 cbtn_last = Checkbutton(automation_restore_options_frame, text="Restore most recent backup", variable=c_last,onvalue=1, offvalue=0, state=NORMAL)
-cbtn_manual_ask = Checkbutton(automation_restore_options_frame,
-text="Manual restore", variable=c_manual_ask,
-onvalue=1, offvalue=0, state=NORMAL)
+cbtn_manual_ask = Checkbutton(automation_restore_options_frame,text="Manual restore", variable=c_manual_ask,onvalue=1, offvalue=0, state=NORMAL)
 cbtn_last.configure(command=partial(get_backup_options, 'Recent'),bg='white')
 cbtn_manual_ask.configure(command=partial(get_backup_options, 'Ask'),bg='white')
 
+# build Add firewall options widgets
 
-acl_number_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
-acl_type_frm = Frame(automation_conf_frame, relief=FLAT, bg='#407294',pady=15)
-acl_options_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
-acl_source_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
-acl_swildcard_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
-acl_des_frm = Frame(automation_conf_frame, relief=FLAT, bg='#407294',pady=15)
-acl_dwildcard_frm = Frame(automation_conf_frame, relief=FLAT,bg='#407294', pady=15)
+acl_number_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FFE4C4', pady=15)
+acl_type_frm = Frame(automation_conf_frame, relief=FLAT, bg='#FFE4C4',pady=15)
+acl_options_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FFE4C4', pady=15)
+acl_source_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FFE4C4', pady=15)
+acl_swildcard_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FFE4C4', pady=15)
+acl_des_frm = Frame(automation_conf_frame, relief=FLAT, bg='#FFE4C4',pady=15)
+acl_dwildcard_frm = Frame(automation_conf_frame, relief=FLAT,bg='#FFE4C4', pady=15)
 
-acl_number_lbl = Label(acl_number_frm, text='Aceess List number',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#407294')
-acl_type_lbl = Label(acl_type_frm, text='Type', font=('Aria', 15,'bold'), fg='black',anchor='w', bg='#407294')
-acl_protocol_lbl = Label(acl_options_frm, text='Options',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#407294')
-acl_source_lbl = Label(acl_source_frm, text='Source', font=('Aria',15, 'bold'), fg='black',anchor='w', bg='#407294')
-acl_swildcard_lbl = Label(acl_swildcard_frm, text='wildcard',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#407294')
-acl_des_lbl = Label(acl_des_frm, text='Destination', font=('Aria', 15,'bold'), fg='black',anchor='w', bg='#407294')
-acl_dwildcard_lbl = Label(acl_dwildcard_frm, text='wildcard',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#407294')
+acl_number_lbl = Label(acl_number_frm, text='Aceess List number',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_type_lbl = Label(acl_type_frm, text='Type', font=('Aria', 15,'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_protocol_lbl = Label(acl_options_frm, text='Options',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_source_lbl = Label(acl_source_frm, text='Source', font=('Aria',15, 'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_swildcard_lbl = Label(acl_swildcard_frm, text='wildcard',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_des_lbl = Label(acl_des_frm, text='Destination', font=('Aria', 15,'bold'), fg='black',anchor='w', bg='#FFE4C4')
+acl_dwildcard_lbl = Label(acl_dwildcard_frm, text='wildcard',font=('Aria', 15, 'bold'), fg='black',anchor='w', bg='#FFE4C4')
 
 
 acl_selected_type = StringVar()
@@ -730,7 +749,7 @@ destination_ip_entry = Entry(acl_des_frm, textvariable=destination_ip,width=15, 
 destination_wildcard_entry = Entry(acl_dwildcard_frm, textvariable=destination_wildcard,width=15, font='Helvetica 11')
 
 
-bgimg = ImageTk.PhotoImage(Image.open('./Joseph_Seed.png').resize((300, 93)), Image.ANTIALIAS)
+bgimg = ImageTk.PhotoImage(Image.open('./NetworkAutomation/Joseph_Seed.png').resize((300, 93)), Image.ANTIALIAS)
 bg_lbl = Label(img_frame, image=bgimg)
 
 output_description = Text(output_frame)
@@ -740,12 +759,13 @@ v_output = Scrollbar(output_frame, orient=VERTICAL, bg='#ffffff')
 v_automation_actions = Scrollbar(automations_frame, orient=VERTICAL,bg='#ffffff')
 
 device_list = Listbox(devices_frame, selectmode="multiple", exportselection=False, yscrollcommand=v_device_list.set)
-device_list.config(width=45, height=14, font='Arial 11', activestyle='none')
+device_list.config(width=45, height=8, font='Arial 11', activestyle='none')
 automations_list = Listbox(automations_frame, selectmode="single", exportselection=False,yscrollcommand=v_automation_actions.set)
 
-automations_list.config(width=45, height=8, font='Arial 11', activestyle='none')
+automations_list.config(width=45, height=8 , font='Arial 11', activestyle='none')
 automations_list.bind("<<ListboxSelect>>", get_config_name)
 # configure scrollbars
+
 v_device_list.config(command=device_list.yview)
 v_output.config(command=output_description.yview)
 v_automation_actions.config(command=automations_list.yview)
@@ -807,7 +827,7 @@ add_device_clear_btn.pack(side=LEFT, pady=5)
 
 info_frame.pack(side=LEFT, fill=BOTH, padx=10, pady=10)
 buttons_frame.pack(side=BOTTOM, anchor="n", padx=10, pady=10)
-output_frame.pack(fill=BOTH, side=BOTTOM, pady=10)
+output_frame.pack(fill=BOTH, side=BOTTOM, pady=8)
 img_frame.pack(fill=BOTH, side=TOP, pady=10)
 left_sub_frame.pack(side=LEFT, fill=BOTH, pady=10)
 bg_lbl.pack()
@@ -829,4 +849,5 @@ change_pass_btn.pack(anchor="s", side=BOTTOM, pady=5)
 execute_btn.pack(side=BOTTOM, pady=5)
 v_output.pack(side=RIGHT, fill=Y)
 output_description.pack(fill=BOTH, side=BOTTOM)
+root.tk.call('tk','scaling',0.5)
 root.mainloop()
